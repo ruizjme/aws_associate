@@ -59,7 +59,11 @@ Virtual disk.
 Can be attached to EC2, to create filesystem, install DB, etc.
 Root device volume contains instance OS. Other volumes can be attached to EC2 instance.
 
-By default, EBS volumes are deleted on EC2-instance termination.
+By default, EBS root volumes are deleted on EC2-instance termination. Other volumes that may be attached to instance remain "available".
+
+Volumes mounted to EC2 instance must be in the **same AZ**.
+
+Volumes can now be modified (size and storage type) on the go with no downtime to EC2 instance.
 
 ## Types
 * General purpose SSD (GP2)
@@ -79,3 +83,22 @@ By default, EBS volumes are deleted on EC2-instance termination.
 * Magnetic (Standard)
   - Legacy
   - Lowest cost per Gb for bootable disk
+
+
+## Snapshots
+
+Snapshots are point in time copies of Volumes. Snapshots are incremental.
+
+To migrate volume to another AZ, take snapshot, then copy to AZ, then create a new volume from the snapshot.
+
+A new image can be created from a snapshot, which can then be booted as EC2 instance. Images appear under Images > AMIs. AMIs can be migrated to other AZs as well.
+
+Snapshots exist on S3 (but are listed under EC2 in the console).
+
+Snapshots can be encrypted when copying them. To have a root volume in an EC2 instance be encrypted, follow this procedure.
+
+Snapshots of encrypted volumes are encrypted automatically.
+Volumes from encrypted snapshots are encrypted automatically.
+Snapshots can be shared only if unencrypted.
+
+Best practice is to stop instance when taking snapshot.
