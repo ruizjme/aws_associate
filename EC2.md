@@ -102,3 +102,84 @@ Volumes from encrypted snapshots are encrypted automatically.
 Snapshots can be shared only if unencrypted.
 
 Best practice is to stop instance when taking snapshot.
+
+## AMI Types
+
+(Root device) EBS vs IS
+
+Criteria:
+
+* Region
+* OS
+* Architecture
+* Launch permissions
+* Storage: EBS or Instance Storage (ephemeral)
+
+Instance store: cannot stop the instance, only terminate. The root device is created from a template stored in S3.
+
+
+## Elastic Load Balancers
+
+
+### Types
+#### Application load balancers
+For HTTP/HTTPS traffic. Operate at Layer 7 (application) are application aware. Intelligent request routing.
+
+#### Network load balancers
+Really fast, extreme performance. Operate at Layer 4 (connection). Millions of requests per second.
+
+#### Classic load balancers
+Old tech. ELB usually refers to CLB. HTTP/HTTPS. Can use Layer 7-specific features (e.g. x-forwarded, sticky sessions). Usually on Layer 4 relying on TCP only.
+
+If app stops responding, CLB responds with 504 (means CLB is up but app or db server failed). Gateway timeout.
+
+**X-Forwarded-For Header** can pass public IP address to app server.
+
+
+### Health check
+Load balancer performs regular health checks. If a target instance is unhealthy, no traffic will be directed to it. Instances can be InService or OutofService based on health checks.
+
+LBs have a DNS name. You are not given an IP address.
+
+
+## Auto Scaling groups
+
+Create auto scaling group
+Create launch configuration
+Instances are evenly distributed across specified zones within region.
+
+Deleting autoscaling groups deletes the instances.
+
+# Placement groups
+
+Clustered placement groups: within single AZ. Low latency and high network throughput.
+
+Spread placement group: group of instances (opposite of clustered) ensures instances are in different hardware in different AZs.
+
+Only some instances types can be launched in placement groups.
+
+Should be homogenous in instance type
+
+Can't be merged
+
+Can't move existing instance into group.
+
+
+
+# EFS
+
+Elastic File System for EC2 instances. Storage capacity is elastic. EFS can be mounted to several instances.
+
+Unlike EBS: 30c per Gb. Can scale up to Pb. Supports thousands of concurrent NFS connections.
+
+Data is stored across multiple AZ's in region.
+
+Read after write consistency.
+
+Block storage.
+
+Launching: Select AZs within region, vpc, subnet, IP address, sec group, tags.
+
+EC2 instances that use EFS must be in the same VPC Security Group as the EFS volume.
+
+Use case: file server across multiple EC2 instances. File and dir permissions apply.

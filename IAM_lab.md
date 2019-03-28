@@ -1,6 +1,3 @@
-
-
-
 # IAM Lab
 
 Signin link to console. Users can use this link to log in.
@@ -26,7 +23,9 @@ A password policy is a set of rules that define the type of password an IAM user
 
 ## Roles
 
-A way for an AWS service to use another AWS service
+A way for an AWS service to use another AWS service.
+
+Roles are global.
 
 ## Policies
 
