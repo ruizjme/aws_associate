@@ -27,6 +27,8 @@ A way for an AWS service to use another AWS service.
 
 Roles are global.
 
+Easier to manage.
+
 ## Policies
 
 JSON. Effect, action, resource. To define what users, groups or roles can do/access.

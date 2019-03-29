@@ -65,6 +65,8 @@ Volumes mounted to EC2 instance must be in the **same AZ**.
 
 Volumes can now be modified (size and storage type) on the go with no downtime to EC2 instance.
 
+EBS root volumes can now be encrypted via aws cli or console.
+
 ## Types
 * General purpose SSD (GP2)
   - Balances price/performance
