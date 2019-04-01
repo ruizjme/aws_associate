@@ -28,7 +28,7 @@ Using content from S3 bucket in location far away.
 * TTL: important design consideration (how often are files updated?)
 * Restrict viewer access: to restrict access to certain users (pre-signed URLs or cookies)
 * SSL certs
-* Geo restrictions: whitelist or blacklist
+* Geo restrictions: whitelist or blacklist (not both)
 * Invalidations: for quick removal of sensitive items that have been accidentally cached
 
 CloudFront has own URL, S3-url access can be restricted.

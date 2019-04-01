@@ -105,6 +105,8 @@ Snapshots can be shared only if unencrypted.
 
 Best practice is to stop instance when taking snapshot.
 
+Can I delete a snapshot of an EBS Volume that is used as the root device of a registered AMI? NO
+
 ## AMI Types
 
 (Root device) EBS vs IS
@@ -119,6 +121,9 @@ Criteria:
 
 Instance store: cannot stop the instance, only terminate. The root device is created from a template stored in S3.
 
+
+### Hypervisors
+Nitro and Xen
 
 ## Elastic Load Balancers
 
