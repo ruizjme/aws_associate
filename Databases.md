@@ -50,7 +50,8 @@ For DR only. Any changes to DB A are automatically replicated to DB B. Since DNS
 # Read replica
 
 Scale prod DB 'out' so servers can read off replicas. (Read only copies of main DB). (Not available for sql server or oracle)
-Used for scaling (performance enhancement) not DR.
+Used for scaling (performance enhancement
+  ) not DR.
 Needs auto-backup to be enabled.
 Up to 5 read replica copies of any db.
 Can have read replicas of read replicas
