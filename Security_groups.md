@@ -16,7 +16,7 @@ rule changes apply immediately
 
 rules are **stateful**: outbound rules are implicit based on inbound rules (doesn't matter if an outbound rule is deleted if there is an equiv inbound rule)
 
-traffic cannot be denied with security groups, only allowed.
+traffic cannot be denied with security groups, **only allowed**.
 one cannot block specific IP address using SGs (should use network ACLs)
 
 To apply SG to instances: Actions > networking > Security Groups
